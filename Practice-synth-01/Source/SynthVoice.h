@@ -14,23 +14,25 @@
 
 class SynthVoice : public SynthesiserVoice
 {
-    public:
+public:
     
-        bool canPlaySound (SynthesiserSound* sound){
-            
-        }
+    bool canPlaySound (SynthesiserSound* sound)
+    {
+        return dynamic_cast<SynthSound*>(sound) != nullptr;
+    }
     
     //=================================================
     
     void startNote (int midiNoteNumber, float velocity, SynthesiserSound* sound, int currentPitchWheelPosition)
     {
-        
+        frequency = MidiMessage::getMidiNoteInHertz(midiNoteNumber);
+        std::cout << midiNoteNumber << std::endl;
     }
     //==================================================
     
     void stopNote (float velocity, bool allowTailOff)
     {
-        
+        clearCurrentNote();
     }
     //====================================================
     
@@ -49,6 +51,8 @@ class SynthVoice : public SynthesiserVoice
         
     }
     //====================================================
-    private:
+private:
+    double leve;
+    double frequency;
     
 };

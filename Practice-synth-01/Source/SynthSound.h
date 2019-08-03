@@ -11,7 +11,7 @@
 #pragma once
 #include "../JuceLibraryCode/JuceHeader.h"
 
-class SynthSound:: public SynthesiserSound
+class SynthSound : public SynthesiserSound
 {
   
 public:
