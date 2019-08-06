@@ -65,12 +65,13 @@ public:
         
         for (int sample = 0; sample < numSamples; sample++)
         {
-            double theWave = osc1.sinewave(440);
+            double theWave = osc1.sinewave(frequency);
             double theSound = env1.adsr(theWave, env1.trigger) * level;
+            double filterSound = filter1.lores(theSound, 50, 0.1);
             
             for (int channel = 0; channel < outputBuffer.getNumChannels(); channel++)
             {
-                outputBuffer.addSample(channel, startSample, theSound);
+                outputBuffer.addSample(channel, startSample, filterSound);
                 
             }
             startSample++;
@@ -83,4 +84,5 @@ private:
     double frequency;
     maxiOsc osc1;
     maxiEnv env1;
+    maxiFilter filter1;
 };
