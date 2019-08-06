@@ -11,6 +11,8 @@
 #pragma once
 #include "../JuceLibraryCode/JuceHeader.h"
 #include "SynthSound.h"
+#include "maximilian.h"
+
 
 class SynthVoice : public SynthesiserVoice
 {
@@ -25,14 +27,15 @@ public:
     
     void startNote (int midiNoteNumber, float velocity, SynthesiserSound* sound, int currentPitchWheelPosition)
     {
+        level = velocity;
         frequency = MidiMessage::getMidiNoteInHertz(midiNoteNumber);
-        std::cout << midiNoteNumber << std::endl;
+       // std::cout << midiNoteNumber << std::endl;
     }
     //==================================================
     
     void stopNote (float velocity, bool allowTailOff)
     {
-        clearCurrentNote();
+        level = 0;
     }
     //====================================================
     
@@ -49,10 +52,21 @@ public:
     void renderNextBlock (AudioBuffer<float> &outputBuffer, int startSample, int numSamples)
     {
         
+        for (int sample = 0; sample < numSamples; sample++)
+        {
+            double theWave = osc1.sinewave(440) * level;
+            for (int channel = 0; channel < outputBuffer.getNumChannels(); channel++)
+            {
+                outputBuffer.addSample(channel, startSample, theWave);
+                
+            }
+            startSample++;
+        }
+        
     }
     //====================================================
 private:
-    double leve;
+    double level;
     double frequency;
-    
+    maxiOsc osc1;
 };
