@@ -21,9 +21,11 @@ Practicesynth01AudioProcessor::Practicesynth01AudioProcessor()
                       #endif
                        .withOutput ("Output", AudioChannelSet::stereo(), true)
                      #endif
-                       )
+                       ),
+attackTime(0.1f)
 #endif
 {
+    
     mySynth.clearVoices();
     for (int i = 0; i < 5; i++){
         mySynth.addVoice(new SynthVoice());

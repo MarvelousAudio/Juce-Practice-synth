@@ -25,7 +25,7 @@ Practicesynth01AudioProcessorEditor::Practicesynth01AudioProcessorEditor (Practi
     attackParameter.setValue(0.1f);
     attackParameter.setTextBoxStyle(Slider::TextBoxBelow, true, 20.0, 10.0);
     attackParameter.addListener(this);
-    addAndMakeVisible(attackParameter);
+    addAndMakeVisible(&attackParameter);
 }
 
 Practicesynth01AudioProcessorEditor::~Practicesynth01AudioProcessorEditor()
@@ -52,5 +52,8 @@ void Practicesynth01AudioProcessorEditor::resized()
 
 void Practicesynth01AudioProcessorEditor::sliderValueChanged(Slider* slider)
 {
-    
+    if (slider == &attackParameter){
+        processor.attackTime = attackParameter.getValue();
+        //DBG(processor.attackTime);
+    }
 }
