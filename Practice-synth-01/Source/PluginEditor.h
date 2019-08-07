@@ -13,10 +13,12 @@
 #include "../JuceLibraryCode/JuceHeader.h"
 #include "PluginProcessor.h"
 
+
 //==============================================================================
 /**
 */
-class Practicesynth01AudioProcessorEditor  : public AudioProcessorEditor
+class Practicesynth01AudioProcessorEditor  : public AudioProcessorEditor,
+public Slider::Listener
 {
 public:
     Practicesynth01AudioProcessorEditor (Practicesynth01AudioProcessor&);
@@ -25,11 +27,13 @@ public:
     //==============================================================================
     void paint (Graphics&) override;
     void resized() override;
-
+    void sliderValueChanged(Slider* slider) override;
 private:
     // This reference is provided as a quick way for your editor to
     // access the processor object that created it.
     Practicesynth01AudioProcessor& processor;
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (Practicesynth01AudioProcessorEditor)
+    Slider attackParameter;
+    Slider releaseParameter;
 };

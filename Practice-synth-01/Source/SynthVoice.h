@@ -85,4 +85,8 @@ private:
     maxiOsc osc1;
     maxiEnv env1;
     maxiFilter filter1;
+    
+    AudioParameterFloat* mAttackParameter;
+    AudioParameterFloat* mDecayParameter;
+    AudioParameterFloat* mReleaseParameter;
 };
