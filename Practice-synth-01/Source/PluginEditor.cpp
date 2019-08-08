@@ -20,12 +20,26 @@ Practicesynth01AudioProcessorEditor::Practicesynth01AudioProcessorEditor (Practi
     setSize (400, 300);
     
     //attack slider!
+    //attackParameter.setBounds(0, 0, 40, 100);
     attackParameter.setSliderStyle(Slider::SliderStyle::LinearVertical);
-    attackParameter.setRange(0.1f, 5000);
+    attackParameter.setRange(0.1f, 5000.0f);
     attackParameter.setValue(0.1f);
     attackParameter.setTextBoxStyle(Slider::TextBoxBelow, true, 20.0, 10.0);
     attackParameter.addListener(this);
-    addAndMakeVisible(&attackParameter);
+    addAndMakeVisible(attackParameter);
+    
+    attackTree = new AudioProcessorValueTreeState::SliderAttachment (processor.tree, "attack", attackParameter);
+    
+    //==========================================================================
+    
+    releaseParameter.setSliderStyle(Slider::SliderStyle::LinearVertical);
+    releaseParameter.setRange(0.1f, 5000.0f);
+    releaseParameter.setValue(0.1f);
+    releaseParameter.setTextBoxStyle(Slider::TextBoxBelow, true, 20.0, 10.0);
+    releaseParameter.addListener(this);
+    addAndMakeVisible(releaseParameter);
+    
+    releaseTree = new AudioProcessorValueTreeState::SliderAttachment (processor.tree, "release", releaseParameter);
 }
 
 Practicesynth01AudioProcessorEditor::~Practicesynth01AudioProcessorEditor()
@@ -48,12 +62,19 @@ void Practicesynth01AudioProcessorEditor::resized()
     // This is generally where you'll want to lay out the positions of any
     // subcomponents in your editor..
     attackParameter.setBounds(0, 0, 40, 100);
+    releaseParameter.setBounds(40, 0, 40, 100);
 }
 
 void Practicesynth01AudioProcessorEditor::sliderValueChanged(Slider* slider)
 {
     if (slider == &attackParameter){
         processor.attackTime = attackParameter.getValue();
-        //DBG(processor.attackTime);
+        
+        DBG("attackTime: " << processor.attackTime);
+    }
+    if (slider == &releaseParameter){
+        processor.releaseTime = releaseParameter.getValue();
+        
+        DBG("releaseTime: " << processor.releaseTime);
     }
 }

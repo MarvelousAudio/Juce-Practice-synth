@@ -22,9 +22,20 @@ Practicesynth01AudioProcessor::Practicesynth01AudioProcessor()
                        .withOutput ("Output", AudioChannelSet::stereo(), true)
                      #endif
                        ),
-attackTime(0.1f)
+attackTime(0.1f),
+releaseTime(0.1f),
+tree(*this, nullptr, "PARAMETERS", createParameterLayout())
 #endif
 {
+    //NormalisableRange<float> attackParam (0.1f, 5000.0f);
+    //tree.createAndAddParameter("attack", "Attack", "Attack", attackParam, 0.1f,nullptr,nullptr);
+    
+//    using Parameter = AudioProcessorValueTreeState::Parameter;
+//    YourAudioProcessor()
+//    : apvts (*this, &undoManager, "PARAMETERS", { std::make_unique<Parameter> (paramID1, paramName1, ...),
+//        std::make_unique<Parameter> (paramID2, paramName2, ...),
+//        ... })
+    
     
     mySynth.clearVoices();
     for (int i = 0; i < 5; i++){
@@ -167,8 +178,17 @@ void Practicesynth01AudioProcessor::processBlock (AudioBuffer<float>& buffer, Mi
 //
 //        // ..do something to the data...
 //    }
+    for (int i = 0; i < mySynth.getNumVoices(); i++)
+    {
+        if (myVoice = dynamic_cast<SynthVoice*>(mySynth.getVoice(i)))
+        {
+            myVoice->getParam(tree.getRawParameterValue("attack"),
+                              tree.getRawParameterValue("release"));
+        }
+    }
     buffer.clear();
     mySynth.renderNextBlock(buffer, midiMessages, 0, buffer.getNumSamples());
+    
 }
 
 //==============================================================================
@@ -195,7 +215,16 @@ void Practicesynth01AudioProcessor::setStateInformation (const void* data, int s
     // You should use this method to restore your parameters from this memory block,
     // whose contents will have been created by the getStateInformation() call.
 }
-
+AudioProcessorValueTreeState::ParameterLayout Practicesynth01AudioProcessor::createParameterLayout()
+{
+    std::vector < std::unique_ptr<RangedAudioParameter>> params;
+    
+    params.push_back(std::make_unique<AudioParameterFloat>("attack", "Attack", NormalisableRange<float>(0.1f, 5000.0f), 0.1f));
+    
+    params.push_back(std::make_unique<AudioParameterFloat>("release", "Release", NormalisableRange<float>(0.1f, 5000.0f), 0.1f));
+    
+    return { params.begin(), params.end() };
+}
 //==============================================================================
 // This creates new instances of the plugin..
 AudioProcessor* JUCE_CALLTYPE createPluginFilter()

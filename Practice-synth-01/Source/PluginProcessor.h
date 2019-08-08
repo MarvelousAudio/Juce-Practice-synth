@@ -58,6 +58,11 @@ public:
 
 
     float attackTime;
+    float releaseTime;
+    
+    AudioProcessorValueTreeState tree;
+    AudioProcessorValueTreeState::ParameterLayout createParameterLayout();
+    
 private:
     //==============================================================================
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (Practicesynth01AudioProcessor)
