@@ -59,6 +59,7 @@ public:
 
     float attackTime;
     float releaseTime;
+    float decayTime;
     
     AudioProcessorValueTreeState tree;
     //AudioProcessorValueTreeState releaseTree;

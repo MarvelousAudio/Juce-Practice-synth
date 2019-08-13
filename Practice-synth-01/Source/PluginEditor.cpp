@@ -27,10 +27,13 @@ Practicesynth01AudioProcessorEditor::Practicesynth01AudioProcessorEditor (Practi
     attackParameter.setTextBoxStyle(Slider::TextBoxBelow, true, 20.0, 10.0);
     attackParameter.addListener(this);
     addAndMakeVisible(&attackParameter);
-    
-//    attackTree = new AudioProcessorValueTreeState::SliderAttachment (processor.tree, "attack", attackParameter);
-//    releaseTree = new AudioProcessorValueTreeState::SliderAttachment (processor.tree, "release", releaseParameter);
-    
+    //==========================================================================
+    decayParameter.setSliderStyle(Slider::SliderStyle::LinearVertical);
+    decayParameter.setRange(0.1f, 500.0f);
+    decayParameter.setValue(0.1f);
+    decayParameter.setTextBoxStyle(Slider::TextBoxBelow, true, 20.0, 10.0);
+    decayParameter.addListener(this);
+    addAndMakeVisible(&decayParameter);
     //==========================================================================
     
     releaseParameter.setSliderStyle(Slider::SliderStyle::LinearVertical);
@@ -44,6 +47,7 @@ Practicesynth01AudioProcessorEditor::Practicesynth01AudioProcessorEditor (Practi
     
     
     attackTree = std::make_unique< AudioProcessorValueTreeState::SliderAttachment>(processor.tree, "attack", attackParameter);
+    decayTree = std::make_unique< AudioProcessorValueTreeState::SliderAttachment>(processor.tree, "decay", decayParameter);
     releaseTree = std::make_unique< AudioProcessorValueTreeState::SliderAttachment>(processor.tree, "release", releaseParameter);
 //    DBG("releaseParameter: " << releaseTree);
 //    DBG("attackParameter: " << attackTree);
@@ -71,7 +75,8 @@ void Practicesynth01AudioProcessorEditor::resized()
     // This is generally where you'll want to lay out the positions of any
     // subcomponents in your editor..
     attackParameter.setBounds(0, 0, 40, 100);
-    releaseParameter.setBounds(40, 0, 40, 100);
+    decayParameter.setBounds(20, 0, 40, 100);
+    releaseParameter.setBounds(80, 0, 40, 100);
 }
 
 void Practicesynth01AudioProcessorEditor::sliderValueChanged(Slider* slider)
