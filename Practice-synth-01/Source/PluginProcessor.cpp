@@ -24,6 +24,7 @@ Practicesynth01AudioProcessor::Practicesynth01AudioProcessor()
                        ),
 attackTime(0.1f),
 releaseTime(0.1f),
+sustainTime(0.8f),
 decayTime(500.0f),
 tree(*this, nullptr, "PARAMETERS", createParameterLayout())
 //releaseTree(*this, nullptr, "PARAMTERS", createParameterLayout())
@@ -186,6 +187,8 @@ void Practicesynth01AudioProcessor::processBlock (AudioBuffer<float>& buffer, Mi
         {
             myVoice->getParam(tree.getRawParameterValue("attack"),
                               tree.getRawParameterValue("decay"),
+                              tree.getRawParameterValue("sustain"),
+
                               tree.getRawParameterValue("release"));
         }
     }
@@ -226,6 +229,7 @@ AudioProcessorValueTreeState::ParameterLayout Practicesynth01AudioProcessor::cre
     //adsr
     params.push_back(std::make_unique<AudioParameterFloat>("attack", "Attack", NormalisableRange<float>(0.1f, 5000.0f), 0.1f));
     params.push_back(std::make_unique<AudioParameterFloat>("decay", "Decay", NormalisableRange<float>(0.1f, 500.0f), 500.0f));
+    params.push_back(std::make_unique<AudioParameterFloat>("sustain", "Sustain", NormalisableRange<float>(0.1f, 0.8f), 0.8f));
 
     params.push_back(std::make_unique<AudioParameterFloat>("release", "Release", NormalisableRange<float>(0.1f, 5000.0f), 0.1f));
     //===============================================================================

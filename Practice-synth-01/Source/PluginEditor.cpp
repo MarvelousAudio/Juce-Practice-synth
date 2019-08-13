@@ -18,24 +18,37 @@ Practicesynth01AudioProcessorEditor::Practicesynth01AudioProcessorEditor (Practi
     // Make sure that before the constructor has finished, you've set the
     // editor's size to whatever you need it to be.
     setSize (400, 300);
+    //=======================================================================
+    //attack GUI!
     
-    //attack slider!
-    //attackParameter.setBounds(0, 0, 40, 100);
     attackParameter.setSliderStyle(Slider::SliderStyle::LinearVertical);
     attackParameter.setRange(0.1f, 5000.0f);
     attackParameter.setValue(0.1f);
     attackParameter.setTextBoxStyle(Slider::TextBoxBelow, true, 20.0, 10.0);
     attackParameter.addListener(this);
     addAndMakeVisible(&attackParameter);
+    
+    
     //==========================================================================
+    //decay GUI
     decayParameter.setSliderStyle(Slider::SliderStyle::LinearVertical);
     decayParameter.setRange(0.1f, 500.0f);
     decayParameter.setValue(0.1f);
     decayParameter.setTextBoxStyle(Slider::TextBoxBelow, true, 20.0, 10.0);
     decayParameter.addListener(this);
     addAndMakeVisible(&decayParameter);
-    //==========================================================================
     
+    
+    //==========================================================================
+    //sustain GUI
+    sustainParameter.setSliderStyle(Slider::SliderStyle::LinearVertical);
+    sustainParameter.setRange(0.1f, 0.8f);
+    sustainParameter.setValue(0.8f);
+    sustainParameter.setTextBoxStyle(Slider::TextBoxBelow, true, 20.0, 10.0);
+    sustainParameter.addListener(this);
+    addAndMakeVisible(&sustainParameter);
+    //==========================================================================
+    //release GUI
     releaseParameter.setSliderStyle(Slider::SliderStyle::LinearVertical);
     releaseParameter.setRange(0.1f, 5000.0f);
     releaseParameter.setValue(0.1f);
@@ -48,6 +61,8 @@ Practicesynth01AudioProcessorEditor::Practicesynth01AudioProcessorEditor (Practi
     
     attackTree = std::make_unique< AudioProcessorValueTreeState::SliderAttachment>(processor.tree, "attack", attackParameter);
     decayTree = std::make_unique< AudioProcessorValueTreeState::SliderAttachment>(processor.tree, "decay", decayParameter);
+    sustainTree = std::make_unique< AudioProcessorValueTreeState::SliderAttachment>(processor.tree, "sustain", sustainParameter);
+
     releaseTree = std::make_unique< AudioProcessorValueTreeState::SliderAttachment>(processor.tree, "release", releaseParameter);
 //    DBG("releaseParameter: " << releaseTree);
 //    DBG("attackParameter: " << attackTree);
@@ -76,7 +91,8 @@ void Practicesynth01AudioProcessorEditor::resized()
     // subcomponents in your editor..
     attackParameter.setBounds(0, 0, 40, 100);
     decayParameter.setBounds(20, 0, 40, 100);
-    releaseParameter.setBounds(80, 0, 40, 100);
+    sustainParameter.setBounds(40, 0, 40, 100);
+    releaseParameter.setBounds(60, 0, 40, 100);
 }
 
 void Practicesynth01AudioProcessorEditor::sliderValueChanged(Slider* slider)

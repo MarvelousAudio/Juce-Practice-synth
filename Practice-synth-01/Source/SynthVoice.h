@@ -23,12 +23,11 @@ public:
         return dynamic_cast<SynthSound*>(sound) != nullptr;
     }
     //=================================================
-    void getParam(float* attack,float* decay, float* release)
+    void getParam(float* attack,float* decay,float* sustain, float* release)
     {
         env1.setAttack(double(*attack));
         env1.setDecay(*decay);
-//        env1.setSustain(0.8);
-        
+        env1.setSustain(*sustain);
         env1.setRelease(double(*release));
         
     }
@@ -70,7 +69,7 @@ public:
     {
         //env1.setAttack(1000);
         //env1.setDecay(500);
-        env1.setSustain(0.8);
+        //env1.setSustain(0.8);
 //        env1.setRelease(2000);
         
         for (int sample = 0; sample < numSamples; sample++)

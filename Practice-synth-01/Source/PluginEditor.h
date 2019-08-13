@@ -37,12 +37,14 @@ private:
 
     Slider attackParameter;
     Slider decayParameter;
+    Slider sustainParameter;
     Slider releaseParameter;
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (Practicesynth01AudioProcessorEditor)
     
 public:
     std::unique_ptr <AudioProcessorValueTreeState::SliderAttachment> attackTree;
     std::unique_ptr <AudioProcessorValueTreeState::SliderAttachment> decayTree;
+    std::unique_ptr <AudioProcessorValueTreeState::SliderAttachment> sustainTree;
     std::unique_ptr <AudioProcessorValueTreeState::SliderAttachment> releaseTree;
     //JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (Practicesynth01AudioProcessorEditor)
     
