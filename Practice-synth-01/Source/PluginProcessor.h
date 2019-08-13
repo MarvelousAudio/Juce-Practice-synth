@@ -61,6 +61,7 @@ public:
     float releaseTime;
     
     AudioProcessorValueTreeState tree;
+    //AudioProcessorValueTreeState releaseTree;
     AudioProcessorValueTreeState::ParameterLayout createParameterLayout();
     
 private:

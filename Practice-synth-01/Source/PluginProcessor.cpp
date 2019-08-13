@@ -25,6 +25,7 @@ Practicesynth01AudioProcessor::Practicesynth01AudioProcessor()
 attackTime(0.1f),
 releaseTime(0.1f),
 tree(*this, nullptr, "PARAMETERS", createParameterLayout())
+//releaseTree(*this, nullptr, "PARAMTERS", createParameterLayout())
 #endif
 {
     //NormalisableRange<float> attackParam (0.1f, 5000.0f);

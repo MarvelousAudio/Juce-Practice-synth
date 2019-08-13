@@ -26,9 +26,10 @@ Practicesynth01AudioProcessorEditor::Practicesynth01AudioProcessorEditor (Practi
     attackParameter.setValue(0.1f);
     attackParameter.setTextBoxStyle(Slider::TextBoxBelow, true, 20.0, 10.0);
     attackParameter.addListener(this);
-    addAndMakeVisible(attackParameter);
+    addAndMakeVisible(&attackParameter);
     
-    attackTree = new AudioProcessorValueTreeState::SliderAttachment (processor.tree, "attack", attackParameter);
+//    attackTree = new AudioProcessorValueTreeState::SliderAttachment (processor.tree, "attack", attackParameter);
+//    releaseTree = new AudioProcessorValueTreeState::SliderAttachment (processor.tree, "release", releaseParameter);
     
     //==========================================================================
     
@@ -37,9 +38,17 @@ Practicesynth01AudioProcessorEditor::Practicesynth01AudioProcessorEditor (Practi
     releaseParameter.setValue(0.1f);
     releaseParameter.setTextBoxStyle(Slider::TextBoxBelow, true, 20.0, 10.0);
     releaseParameter.addListener(this);
-    addAndMakeVisible(releaseParameter);
+    addAndMakeVisible(&releaseParameter);
     
-    releaseTree = new AudioProcessorValueTreeState::SliderAttachment (processor.tree, "release", releaseParameter);
+//    releaseTree = new AudioProcessorValueTreeState::SliderAttachment (processor.tree, "release", releaseParameter);
+    
+    
+    attackTree = std::make_unique< AudioProcessorValueTreeState::SliderAttachment>(processor.tree, "attack", attackParameter);
+    releaseTree = std::make_unique< AudioProcessorValueTreeState::SliderAttachment>(processor.tree, "release", releaseParameter);
+//    DBG("releaseParameter: " << releaseTree);
+//    DBG("attackParameter: " << attackTree);
+    
+    
 }
 
 Practicesynth01AudioProcessorEditor::~Practicesynth01AudioProcessorEditor()
@@ -67,14 +76,14 @@ void Practicesynth01AudioProcessorEditor::resized()
 
 void Practicesynth01AudioProcessorEditor::sliderValueChanged(Slider* slider)
 {
-    if (slider == &attackParameter){
-        processor.attackTime = attackParameter.getValue();
-        
-        DBG("attackTime: " << processor.attackTime);
-    }
-    if (slider == &releaseParameter){
-        processor.releaseTime = releaseParameter.getValue();
-        
-        DBG("releaseTime: " << processor.releaseTime);
-    }
+//    if (slider == &attackParameter){
+//        processor.attackTime = attackParameter.getValue();
+//        
+//        DBG("attackTime: " << processor.attackTime);
+//    }
+//    if (slider == &releaseParameter){
+//        processor.releaseTime = releaseParameter.getValue();
+//
+//        DBG("releaseTime: " << processor.releaseTime);
+//    }
 }

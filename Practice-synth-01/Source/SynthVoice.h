@@ -28,6 +28,7 @@ public:
         env1.setAttack(double(*attack));
 //        env1.setDecay(500);
 //        env1.setSustain(0.8);
+        
         env1.setRelease(double(*release));
         
     }
@@ -68,19 +69,19 @@ public:
     void renderNextBlock (AudioBuffer<float> &outputBuffer, int startSample, int numSamples)
     {
         //env1.setAttack(1000);
-//        env1.setDecay(500);
-//        env1.setSustain(0.8);
+        env1.setDecay(500);
+        env1.setSustain(0.8);
 //        env1.setRelease(2000);
         
         for (int sample = 0; sample < numSamples; sample++)
         {
             double theWave = osc1.sinewave(frequency);
             double theSound = env1.adsr(theWave, env1.trigger) * level;
-            double filterSound = filter1.lores(theSound, 50, 0.1);
+            //double filterSound = filter1.lores(theSound, 50, 0.1);
             
             for (int channel = 0; channel < outputBuffer.getNumChannels(); channel++)
             {
-                outputBuffer.addSample(channel, startSample, filterSound);
+                outputBuffer.addSample(channel, startSample, theSound);
                 
             }
             startSample++;
