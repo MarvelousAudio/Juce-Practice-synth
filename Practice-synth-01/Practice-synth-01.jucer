@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <JUCERPROJECT id="CMijAt" name="Practice-synth-01" projectType="audioplug"
-              jucerVersion="5.4.3" pluginCharacteristicsValue="pluginIsSynth,pluginProducesMidiOut,pluginWantsMidiIn">
+              jucerVersion="5.4.4" pluginCharacteristicsValue="pluginIsSynth,pluginProducesMidiOut,pluginWantsMidiIn">
   <MAINGROUP id="jXlVle" name="Practice-synth-01">
     <GROUP id="{9B767831-4E12-47ED-551A-C358C0E3A1D5}" name="Source">
       <GROUP id="{A3607D58-CE05-4A63-295D-407472E00527}" name="Maximilian">
@@ -35,6 +35,8 @@
       <FILE id="eDyj2Q" name="PluginEditor.cpp" compile="1" resource="0"
             file="Source/PluginEditor.cpp"/>
       <FILE id="HDotyA" name="PluginEditor.h" compile="0" resource="0" file="Source/PluginEditor.h"/>
+      <FILE id="T6zC2J" name="Oscillator.h" compile="0" resource="0" file="Source/Oscillator.h"/>
+      <FILE id="vgbHQw" name="Oscillator.cpp" compile="1" resource="0" file="Source/Oscillator.cpp"/>
       <FILE id="FAhOmD" name="SynthSound.h" compile="0" resource="0" file="Source/SynthSound.h"/>
       <FILE id="bGHPnE" name="SynthVoice.h" compile="0" resource="0" file="Source/SynthVoice.h"/>
     </GROUP>

@@ -11,13 +11,16 @@
 #include "PluginProcessor.h"
 #include "PluginEditor.h"
 
+
 //==============================================================================
 Practicesynth01AudioProcessorEditor::Practicesynth01AudioProcessorEditor (Practicesynth01AudioProcessor& p)
-    : AudioProcessorEditor (&p), processor (p)
+    : AudioProcessorEditor (&p), processor (p), oscGui(p)
 {
     // Make sure that before the constructor has finished, you've set the
     // editor's size to whatever you need it to be.
     setSize (400, 300);
+    
+    addAndMakeVisible(&oscGui);
     //=======================================================================
     //attack GUI!
     
@@ -89,10 +92,17 @@ void Practicesynth01AudioProcessorEditor::resized()
 {
     // This is generally where you'll want to lay out the positions of any
     // subcomponents in your editor..
-    attackParameter.setBounds(0, 0, 40, 100);
-    decayParameter.setBounds(20, 0, 40, 100);
-    sustainParameter.setBounds(40, 0, 40, 100);
-    releaseParameter.setBounds(60, 0, 40, 100);
+    attackParameter.setBounds(0, 80, 40, 100);
+    decayParameter.setBounds(20, 80, 40, 100);
+    sustainParameter.setBounds(40, 80, 40, 100);
+    releaseParameter.setBounds(60, 80, 40, 100);
+    
+    Rectangle<int> area = getLocalBounds();
+    
+    const int componentWidth = 200;
+    const int componentHeight = 200;
+    oscGui.setBounds(area.removeFromLeft(componentWidth).removeFromTop(componentHeight));
+    
 }
 
 void Practicesynth01AudioProcessorEditor::sliderValueChanged(Slider* slider)

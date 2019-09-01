@@ -27,6 +27,7 @@ releaseTime(0.1f),
 sustainTime(0.8f),
 decayTime(500.0f),
 tree(*this, nullptr, "PARAMETERS", createParameterLayout())
+
 //releaseTree(*this, nullptr, "PARAMTERS", createParameterLayout())
 #endif
 {
@@ -232,6 +233,11 @@ AudioProcessorValueTreeState::ParameterLayout Practicesynth01AudioProcessor::cre
     params.push_back(std::make_unique<AudioParameterFloat>("sustain", "Sustain", NormalisableRange<float>(0.1f, 0.8f), 0.8f));
 
     params.push_back(std::make_unique<AudioParameterFloat>("release", "Release", NormalisableRange<float>(0.1f, 5000.0f), 0.1f));
+    
+    NormalisableRange<float> waveTypeParams(0,2);
+    
+    params.push_back(std::make_unique<AudioParameterFloat>("wavetype","WaveType", waveTypeParams, 0));
+    
     //===============================================================================
     return { params.begin(), params.end() };
 }
