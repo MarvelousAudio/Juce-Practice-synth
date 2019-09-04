@@ -28,6 +28,8 @@
         <FILE id="JN0B2T" name="stb_vorbis.c" compile="1" resource="0" file="../../../Development/Libraries/Maximilian/stb_vorbis.c"/>
         <FILE id="Bw0rxT" name="stb_vorbis.h" compile="0" resource="0" file="../../../Development/Libraries/Maximilian/stb_vorbis.h"/>
       </GROUP>
+      <FILE id="Yi3F4A" name="Envelope.h" compile="0" resource="0" file="Source/Envelope.h"/>
+      <FILE id="Eq6MTF" name="Envelope.cpp" compile="1" resource="0" file="Source/Envelope.cpp"/>
       <FILE id="zyfg7h" name="PluginProcessor.cpp" compile="1" resource="0"
             file="Source/PluginProcessor.cpp"/>
       <FILE id="jSfOBm" name="PluginProcessor.h" compile="0" resource="0"

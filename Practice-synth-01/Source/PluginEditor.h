@@ -13,12 +13,12 @@
 #include "../JuceLibraryCode/JuceHeader.h"
 #include "PluginProcessor.h"
 #include "Oscillator.h"
+#include "Envelope.h"
 
 //==============================================================================
 /**
 */
-class Practicesynth01AudioProcessorEditor  : public AudioProcessorEditor,
-public Slider::Listener
+class Practicesynth01AudioProcessorEditor  : public AudioProcessorEditor
 {
 public:
     Practicesynth01AudioProcessorEditor (Practicesynth01AudioProcessor&);
@@ -27,27 +27,27 @@ public:
     //==============================================================================
     void paint (Graphics&) override;
     void resized() override;
-    void sliderValueChanged(Slider* slider) override;
+//    void sliderValueChanged(Slider* slider) override;
 private:
     
-    
+    Envelope envGui;
     // This reference is provided as a quick way for your editor to
     // access the processor object that created it.
     Practicesynth01AudioProcessor& processor;
 //    ScopedPointer <AudioProcessorValueTreeState::SliderAttachment> attackTree;
 //    ScopedPointer <AudioProcessorValueTreeState::SliderAttachment> releaseTree;
     Oscillator oscGui;
-    Slider attackParameter;
-    Slider decayParameter;
-    Slider sustainParameter;
-    Slider releaseParameter;
+//    Slider attackParameter;
+//    Slider decayParameter;
+//    Slider sustainParameter;
+//    Slider releaseParameter;
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (Practicesynth01AudioProcessorEditor)
     
-public:
-    std::unique_ptr <AudioProcessorValueTreeState::SliderAttachment> attackTree;
-    std::unique_ptr <AudioProcessorValueTreeState::SliderAttachment> decayTree;
-    std::unique_ptr <AudioProcessorValueTreeState::SliderAttachment> sustainTree;
-    std::unique_ptr <AudioProcessorValueTreeState::SliderAttachment> releaseTree;
+
+//    std::unique_ptr <AudioProcessorValueTreeState::SliderAttachment> attackTree;
+//    std::unique_ptr <AudioProcessorValueTreeState::SliderAttachment> decayTree;
+//    std::unique_ptr <AudioProcessorValueTreeState::SliderAttachment> sustainTree;
+//    std::unique_ptr <AudioProcessorValueTreeState::SliderAttachment> releaseTree;
     //JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (Practicesynth01AudioProcessorEditor)
     
     //Oscillator oscGui;
