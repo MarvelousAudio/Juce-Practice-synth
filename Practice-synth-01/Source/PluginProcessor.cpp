@@ -191,6 +191,7 @@ void Practicesynth01AudioProcessor::processBlock (AudioBuffer<float>& buffer, Mi
                               tree.getRawParameterValue("sustain"),
 
                               tree.getRawParameterValue("release"));
+            myVoice->getOscType(tree.getRawParameterValue("wavetype"));
         }
     }
     buffer.clear();

@@ -29,5 +29,7 @@ public:
 private:
     ComboBox oscMenu;
     Practicesynth01AudioProcessor& processor;
+    std::unique_ptr <AudioProcessorValueTreeState::ComboBoxAttachment> waveSelection;
+   // ScopedPointer<AudioProcessorValueTreeState::ComboBoxAttachment> waveSelection;
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (Oscillator)
 };

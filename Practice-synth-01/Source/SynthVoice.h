@@ -65,6 +65,42 @@ public:
         
     }
     //====================================================
+    
+    
+    
+    void getOscType(float* selection)
+    {
+        theWave = *selection;
+        
+        
+    }
+    
+    
+    //====================================================
+    
+    double setOscType()
+    {
+        if (theWave == 0)
+        {
+            return osc1.sinewave(frequency);
+        }
+        if (theWave == 1)
+        {
+            return osc1.saw(frequency);
+        }
+        if (theWave == 2)
+        {
+            return osc1.square(frequency);
+        }
+        else
+        {
+            return osc1.sinewave(frequency);
+        }
+    }
+    
+    
+    //====================================================
+    
     void renderNextBlock (AudioBuffer<float> &outputBuffer, int startSample, int numSamples)
     {
         //env1.setAttack(1000);
@@ -74,8 +110,8 @@ public:
         
         for (int sample = 0; sample < numSamples; sample++)
         {
-            double theWave = osc1.sinewave(frequency);
-            double theSound = env1.adsr(theWave, env1.trigger) * level;
+            //double theWave = osc1.sinewave(frequency);
+            double theSound = env1.adsr(setOscType(), env1.trigger) * level;
             //double filterSound = filter1.lores(theSound, 50, 0.1);
             
             for (int channel = 0; channel < outputBuffer.getNumChannels(); channel++)
@@ -94,7 +130,7 @@ private:
     maxiOsc osc1;
     maxiEnv env1;
     maxiFilter filter1;
-    
+    int theWave;
 //    AudioParameterFloat* mAttackParameter;
 //    AudioParameterFloat* mDecayParameter;
 //    AudioParameterFloat* mReleaseParameter;

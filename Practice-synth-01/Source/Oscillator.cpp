@@ -10,6 +10,7 @@
 
 #include "../JuceLibraryCode/JuceHeader.h"
 #include "Oscillator.h"
+//#include "PluginProcessor.h"
 
 //==============================================================================
 Oscillator::Oscillator(Practicesynth01AudioProcessor& p) : processor(p)
@@ -22,10 +23,12 @@ Oscillator::Oscillator(Practicesynth01AudioProcessor& p) : processor(p)
     oscMenu.addItem("Square", 3);
     addAndMakeVisible(&oscMenu);
     oscMenu.addListener(this);
+//    waveSelection = new AudioProcessorValueTreeState::ComboBoxAttachment(processor.tree, "wavetype",oscMenu);
     
     
     oscMenu.setJustificationType(Justification::centred);
     
+    waveSelection = std::make_unique< AudioProcessorValueTreeState::ComboBoxAttachment>(processor.tree, "wavetype", oscMenu);
     
 }
 
