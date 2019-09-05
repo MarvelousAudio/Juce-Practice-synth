@@ -7,7 +7,7 @@
 
   ==============================================================================
 */
-
+//to do delete commeneted stuff!
 #pragma once
 
 #include "../JuceLibraryCode/JuceHeader.h"
@@ -15,8 +15,8 @@
 //==============================================================================
 /*
 */
-class Envelope    : public Component,
-public Slider::Listener
+class Envelope    : public Component
+//public Slider::Listener
 {
 public:
     Envelope(Practicesynth01AudioProcessor&);
@@ -24,7 +24,7 @@ public:
 
     void paint (Graphics&) override;
     void resized() override;
-    void sliderValueChanged(Slider* slider) override;
+//    void sliderValueChanged(Slider* slider) override;
     
 private:
     Practicesynth01AudioProcessor& processor;

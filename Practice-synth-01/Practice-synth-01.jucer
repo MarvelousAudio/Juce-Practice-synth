@@ -41,6 +41,8 @@
       <FILE id="vgbHQw" name="Oscillator.cpp" compile="1" resource="0" file="Source/Oscillator.cpp"/>
       <FILE id="FAhOmD" name="SynthSound.h" compile="0" resource="0" file="Source/SynthSound.h"/>
       <FILE id="bGHPnE" name="SynthVoice.h" compile="0" resource="0" file="Source/SynthVoice.h"/>
+      <FILE id="IR1Phv" name="Filter.cpp" compile="1" resource="0" file="Source/Filter.cpp"/>
+      <FILE id="N3Eab7" name="Filter.h" compile="0" resource="0" file="Source/Filter.h"/>
     </GROUP>
   </MAINGROUP>
   <EXPORTFORMATS>

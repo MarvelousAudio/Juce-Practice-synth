@@ -7,7 +7,7 @@
 
   ==============================================================================
 */
-
+// to do Delete commented stuff!
 #include "../JuceLibraryCode/JuceHeader.h"
 #include "Envelope.h"
 
@@ -23,7 +23,7 @@ Envelope::Envelope(Practicesynth01AudioProcessor& p) :  processor(p)
     attackParameter.setRange(0.1f, 5000.0f);
     attackParameter.setValue(0.1f);
     attackParameter.setTextBoxStyle(Slider::TextBoxBelow, true, 20.0, 10.0);
-    attackParameter.addListener(this);
+   // attackParameter.addListener(this);
     addAndMakeVisible(&attackParameter);
     
     
@@ -33,7 +33,7 @@ Envelope::Envelope(Practicesynth01AudioProcessor& p) :  processor(p)
     decayParameter.setRange(0.1f, 500.0f);
     decayParameter.setValue(0.1f);
     decayParameter.setTextBoxStyle(Slider::TextBoxBelow, true, 20.0, 10.0);
-    decayParameter.addListener(this);
+   // decayParameter.addListener(this);
     addAndMakeVisible(&decayParameter);
     
     
@@ -43,7 +43,7 @@ Envelope::Envelope(Practicesynth01AudioProcessor& p) :  processor(p)
     sustainParameter.setRange(0.1f, 0.8f);
     sustainParameter.setValue(0.8f);
     sustainParameter.setTextBoxStyle(Slider::TextBoxBelow, true, 20.0, 10.0);
-    sustainParameter.addListener(this);
+    //sustainParameter.addListener(this);
     addAndMakeVisible(&sustainParameter);
     //==========================================================================
     //release GUI
@@ -51,7 +51,7 @@ Envelope::Envelope(Practicesynth01AudioProcessor& p) :  processor(p)
     releaseParameter.setRange(0.1f, 5000.0f);
     releaseParameter.setValue(0.1f);
     releaseParameter.setTextBoxStyle(Slider::TextBoxBelow, true, 20.0, 10.0);
-    releaseParameter.addListener(this);
+    //releaseParameter.addListener(this);
     addAndMakeVisible(&releaseParameter);
     
     //    releaseTree = new AudioProcessorValueTreeState::SliderAttachment (processor.tree, "release", releaseParameter);
@@ -115,16 +115,16 @@ void Envelope::resized()
     sustainParameter.setBounds(40, 80, 40, 100);
     releaseParameter.setBounds(60, 80, 40, 100);
 }
-void Envelope::sliderValueChanged(Slider* slider)
-{
-    //    if (slider == &attackParameter){
-    //        processor.attackTime = attackParameter.getValue();
-    //
-    //        DBG("attackTime: " << processor.attackTime);
-    //    }
-    //    if (slider == &releaseParameter){
-    //        processor.releaseTime = releaseParameter.getValue();
-    //
-    //        DBG("releaseTime: " << processor.releaseTime);
-    //    }
-}
+//void Envelope::sliderValueChanged(Slider* slider)
+//{
+//    //    if (slider == &attackParameter){
+//    //        processor.attackTime = attackParameter.getValue();
+//    //
+//    //        DBG("attackTime: " << processor.attackTime);
+//    //    }
+//    //    if (slider == &releaseParameter){
+//    //        processor.releaseTime = releaseParameter.getValue();
+//    //
+//    //        DBG("releaseTime: " << processor.releaseTime);
+//    //    }
+//}

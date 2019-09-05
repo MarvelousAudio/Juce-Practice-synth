@@ -129,6 +129,10 @@
 			isa = PBXBuildFile;
 			fileRef = BBABB039FEF1A6F192E94DCC;
 		};
+		AB70D56CDDF3F79CF1BBF626 = {
+			isa = PBXBuildFile;
+			fileRef = 14B50FEDC0C1A449B2FB08A3;
+		};
 		5723DEED529DDDCB4D619A34 = {
 			isa = PBXBuildFile;
 			fileRef = AA2EA6022EB47D606FE5846A;
@@ -255,13 +259,6 @@
 			path = "/Applications/JUCE/modules/juce_audio_processors";
 			sourceTree = "<absolute>";
 		};
-		188BEEC230636FADF6617B38 = {
-			isa = PBXFileReference;
-			lastKnownFileType = sourcecode.cpp.objcpp;
-			name = "include_juce_audio_plugin_client_VST_utils.mm";
-			path = "../../JuceLibraryCode/include_juce_audio_plugin_client_VST_utils.mm";
-			sourceTree = "SOURCE_ROOT";
-		};
 		ED98BFC73DEC8D267BB53334 = {
 			isa = PBXFileReference;
 			explicitFileType = wrapper.cfbundle;
@@ -282,6 +279,20 @@
 			name = CoreAudio.framework;
 			path = System/Library/Frameworks/CoreAudio.framework;
 			sourceTree = SDKROOT;
+		};
+		14B50FEDC0C1A449B2FB08A3 = {
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.cpp.cpp;
+			name = Filter.cpp;
+			path = ../../Source/Filter.cpp;
+			sourceTree = "SOURCE_ROOT";
+		};
+		188BEEC230636FADF6617B38 = {
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.cpp.objcpp;
+			name = "include_juce_audio_plugin_client_VST_utils.mm";
+			path = "../../JuceLibraryCode/include_juce_audio_plugin_client_VST_utils.mm";
+			sourceTree = "SOURCE_ROOT";
 		};
 		19F52ECC416C48B633E0A0E3 = {
 			isa = PBXFileReference;
@@ -598,6 +609,13 @@
 			path = "/Applications/JUCE/modules/juce_opengl";
 			sourceTree = "<absolute>";
 		};
+		9FE7E2DF849745A8636EC8A2 = {
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.h;
+			name = Filter.h;
+			path = ../../Source/Filter.h;
+			sourceTree = "SOURCE_ROOT";
+		};
 		A0B966A46AEED1F63DCDE975 = {
 			isa = PBXFileReference;
 			lastKnownFileType = wrapper.framework;
@@ -892,6 +910,8 @@
 				BBABB039FEF1A6F192E94DCC,
 				970CA40B4830DDA022C1331D,
 				DAE649DC8500A47E4B0A42CE,
+				14B50FEDC0C1A449B2FB08A3,
+				9FE7E2DF849745A8636EC8A2,
 			);
 			name = Source;
 			sourceTree = "<group>";
@@ -1774,6 +1794,7 @@
 				52535D30C2F43CE5ACB987CB,
 				76D03D4A40BFF368D34BB831,
 				150F3812C2946C87AE86B9A6,
+				AB70D56CDDF3F79CF1BBF626,
 				5723DEED529DDDCB4D619A34,
 				7493FCC99F90A5428FE46550,
 				CEEF5543776B02D3DEF0434F,
