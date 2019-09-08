@@ -24,7 +24,15 @@ public:
     void paint (Graphics&) override;
     void resized() override;
 
+    std::unique_ptr <AudioProcessorValueTreeState::SliderAttachment> filterCutoffTree;
+    std::unique_ptr <AudioProcessorValueTreeState::SliderAttachment> filterResTree;
+    std::unique_ptr <AudioProcessorValueTreeState::ComboBoxAttachment> filterTypeTree;
+    
 private:
+    Slider filterCutoffParameter;
+    Slider filterResParameter;
+    ComboBox filterTypeParameter;
+    
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (Filter)
     Practicesynth01AudioProcessor& processor;
 };

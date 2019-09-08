@@ -14,14 +14,15 @@
 
 //==============================================================================
 Practicesynth01AudioProcessorEditor::Practicesynth01AudioProcessorEditor (Practicesynth01AudioProcessor& p)
-    : AudioProcessorEditor (&p), envGui(p), processor (p), oscGui(p)
+    : AudioProcessorEditor (&p), envGui(p), filtGui(p),processor (p), oscGui(p)
 {
     // Make sure that before the constructor has finished, you've set the
     // editor's size to whatever you need it to be.
-    setSize (400, 200);
+    setSize (400, 400);
     
     addAndMakeVisible(&oscGui);
     addAndMakeVisible(&envGui);
+    addAndMakeVisible(&filtGui);
     //=======================================================================
     //attack GUI!
     
@@ -104,8 +105,12 @@ void Practicesynth01AudioProcessorEditor::resized()
     
     const int componentWidth = 200;
     const int componentHeight = 200;
+//    const int newComponentWidth = 300;
+//    const int newComponentHeight = 300;
+    
     oscGui.setBounds(area.removeFromLeft(componentWidth).removeFromTop(componentHeight));
     envGui.setBounds(area.removeFromLeft(componentWidth).removeFromTop(componentHeight));
+    //filtGui.setBounds(area.removeFromLeft(componentWidth).removeFromTop(componentHeight));
     
 }
 

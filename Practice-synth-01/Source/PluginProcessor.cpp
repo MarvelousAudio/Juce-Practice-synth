@@ -189,9 +189,12 @@ void Practicesynth01AudioProcessor::processBlock (AudioBuffer<float>& buffer, Mi
             myVoice->getParam(tree.getRawParameterValue("attack"),
                               tree.getRawParameterValue("decay"),
                               tree.getRawParameterValue("sustain"),
-
                               tree.getRawParameterValue("release"));
+            
             myVoice->getOscType(tree.getRawParameterValue("wavetype"));
+            
+            myVoice->getFilterParams(tree.getRawParameterValue("filtercutoff"),
+                                     tree.getRawParameterValue("filterres"));
         }
     }
     buffer.clear();
@@ -239,6 +242,8 @@ AudioProcessorValueTreeState::ParameterLayout Practicesynth01AudioProcessor::cre
     
     params.push_back(std::make_unique<AudioParameterFloat>("wavetype","WaveType", waveTypeParams, 0));
     
+    params.push_back(std::make_unique<AudioParameterFloat>("filtercutoff", "FilterCutOff",NormalisableRange<float>(20.0f, 10000.0f), 500.0f));
+    params.push_back(std::make_unique<AudioParameterFloat>("filterres", "FilterRes",NormalisableRange<float>(1.0f, 5.0f), 1.0f));
     //===============================================================================
     return { params.begin(), params.end() };
 }

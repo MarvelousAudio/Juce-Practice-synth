@@ -7,6 +7,7 @@
 
   ==============================================================================
 */
+//to do reorder function memebers!
 
 #pragma once
 #include "../JuceLibraryCode/JuceHeader.h"
@@ -74,10 +75,7 @@ public:
         
         
     }
-    
-    
     //====================================================
-    
     double setOscType()
     {
         if (theWave == 0)
@@ -98,9 +96,35 @@ public:
         }
     }
     
-    
     //====================================================
     
+    
+    double setEnvelope()
+    {
+        return env1.adsr(setOscType(), env1.trigger) * level;
+    }
+    //====================================================
+    
+   
+    void getFilterParams(float* filterCutOff, float* filterRes)
+    {
+    
+//        double theSound = env1.adsr(setOscType(), env1.trigger) * level;
+//
+//       return filter1.lores(theSound, (double)*filterCutOff, (double)*filterRes);
+        cutOff = (double)*filterCutOff;
+        res = (double)*filterRes;
+        DBG("cutoff: \n"<< cutOff);
+        DBG("res: \n"<< res);
+    }
+    
+    //====================================================
+    double setFilter()
+    {
+       return filter1.lores(setEnvelope(), cutOff, res);
+    }
+    
+    //====================================================
     void renderNextBlock (AudioBuffer<float> &outputBuffer, int startSample, int numSamples)
     {
         //env1.setAttack(1000);
@@ -111,12 +135,12 @@ public:
         for (int sample = 0; sample < numSamples; sample++)
         {
             //double theWave = osc1.sinewave(frequency);
-            double theSound = env1.adsr(setOscType(), env1.trigger) * level;
-            //double filterSound = filter1.lores(theSound, 50, 0.1);
+            //double theSound = env1.adsr(setOscType(), env1.trigger) * level;
+            //double filterSound = filter1.lores(setEnvelope(), cutOff, res);
             
             for (int channel = 0; channel < outputBuffer.getNumChannels(); channel++)
             {
-                outputBuffer.addSample(channel, startSample, theSound);
+                outputBuffer.addSample(channel, startSample, setFilter());
                 
             }
             startSample++;
@@ -127,9 +151,15 @@ public:
 private:
     double level;
     double frequency;
+    
     maxiOsc osc1;
     maxiEnv env1;
     maxiFilter filter1;
+    
+    int filterChoice;
+    float cutOff;
+    float res;
+    
     int theWave;
 //    AudioParameterFloat* mAttackParameter;
 //    AudioParameterFloat* mDecayParameter;

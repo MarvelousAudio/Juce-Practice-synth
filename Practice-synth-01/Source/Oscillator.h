@@ -15,8 +15,8 @@
 //==============================================================================
 /*
 */
-class Oscillator    : public Component,
-private ComboBox::Listener
+class Oscillator    : public Component
+//private ComboBox::Listener
 {
 public:
     Oscillator(Practicesynth01AudioProcessor&);
@@ -24,7 +24,7 @@ public:
 
     void paint (Graphics&) override;
     void resized() override;
-    void comboBoxChanged(ComboBox*) override;
+    //void comboBoxChanged(ComboBox*) override;
 
 private:
     ComboBox oscMenu;

@@ -14,6 +14,7 @@
 #include "PluginProcessor.h"
 #include "Oscillator.h"
 #include "Envelope.h"
+#include "Filter.h"
 
 //==============================================================================
 /**
@@ -31,6 +32,7 @@ public:
 private:
     
     Envelope envGui;
+    Filter filtGui;
     // This reference is provided as a quick way for your editor to
     // access the processor object that created it.
     Practicesynth01AudioProcessor& processor;

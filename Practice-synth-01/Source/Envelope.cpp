@@ -110,10 +110,10 @@ void Envelope::resized()
     // This method is where you should set the bounds of any child
     // components that your component contains..
     Rectangle<int> area = getBounds().reduced(40);
-    attackParameter.setBounds(0, 80, 40, 100);
-    decayParameter.setBounds(20, 80, 40, 100);
-    sustainParameter.setBounds(40, 80, 40, 100);
-    releaseParameter.setBounds(60, 80, 40, 100);
+    attackParameter.setBounds(53, 50, 40, 100);
+    decayParameter.setBounds(77, 50, 40, 100);
+    sustainParameter.setBounds(103, 50, 40, 100);
+    releaseParameter.setBounds(128, 50, 40, 100);
 }
 //void Envelope::sliderValueChanged(Slider* slider)
 //{

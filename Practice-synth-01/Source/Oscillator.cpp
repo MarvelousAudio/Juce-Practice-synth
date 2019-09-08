@@ -22,7 +22,8 @@ Oscillator::Oscillator(Practicesynth01AudioProcessor& p) : processor(p)
     oscMenu.addItem("Saw", 2);
     oscMenu.addItem("Square", 3);
     addAndMakeVisible(&oscMenu);
-    oscMenu.addListener(this);
+    //oscMenu.addListener(this);
+    
 //    waveSelection = new AudioProcessorValueTreeState::ComboBoxAttachment(processor.tree, "wavetype",oscMenu);
     
     
@@ -63,7 +64,7 @@ void Oscillator::resized()
     oscMenu.setBounds(area.removeFromTop(20));
 }
 
-void Oscillator::comboBoxChanged(ComboBox* box)
-{
-    
-}
+//void Oscillator::comboBoxChanged(ComboBox* box)
+//{
+//    
+//}
